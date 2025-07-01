@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FlowStockIn - Full Width Section</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#1e40af',
+                        accent: '#0ea5e9',
+                        dark: '#0f172a',
+                        light: '#f8fafc'
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'sans-serif'],
+                        manrope: ['Manrope', 'sans-serif']
+                    },
+                    animation: {
+                        float: 'float 6s ease-in-out infinite',
+                        fadeIn: 'fadeIn 0.5s ease-in forwards'
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-15px)' }
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' }
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Manrope:wght@700;800&display=swap');
+
+        .hero-gradient {
+            background: linear-gradient(135deg, #e0f2fe 0%, #dbeafe 50%, #e0e7ff 100%);
+        }
+        
+        .nav-link {
+            position: relative;
+            padding-bottom: 4px;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: currentColor;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .feature-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.1);
+        }
+        
+        .stat-card {
+            background: linear-gradient(145deg, #ffffff, #f0f4ff);
+            box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .testimonial-card {
+            background: linear-gradient(145deg, #ffffff, #f8fafc);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+        }
+        
+        .gradient-text {
+            background: linear-gradient(90deg, #2563eb, #0ea5e9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .dashboard-mockup {
+            border-radius: 16px;
+            box-shadow: 0 25px 50px -12px rgba(37, 99, 235, 0.25);
+            border: 1px solid rgba(224, 232, 255, 0.5);
+        }
+        
+        .blob {
+            position: absolute;
+            z-index: 0;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.6;
+        }
+        
+        .blob-1 {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(120deg, #93c5fd, #3b82f6);
+            top: -100px;
+            right: -100px;
+            animation: float 12s infinite ease-in-out;
+        }
+        
+        .blob-2 {
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(120deg, #a5b4fc, #6366f1);
+            bottom: -50px;
+            left: -50px;
+            animation: float 10s infinite ease-in-out;
+            animation-delay: 1s;
+        }
+        
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.3), transparent);
+            margin: 80px auto;
+            max-width: 800px;
+        }
+        
+        /* FULL-WIDTH MODIFICATIONS */
+        .full-width-section {
+            width: 100%;
+            max-width: 100%;
+            padding-left: 0;
+            padding-right: 0;
+            margin-left: 0;
+            margin-right: 0;
+        }
+        
+        .full-width-container {
+            width: 100%;
+            max-width: 100%;
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+        
+        @media (min-width: 768px) {
+            .full-width-container {
+                padding-left: 2rem;
+                padding-right: 2rem;
+            }
+        }
+        
+        .full-width-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            width: 100%;
+        }
+        
+        @media (min-width: 768px) {
+            .full-width-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        /* Testimonial Slider Styles */
+        .testimonial-slider {
+            padding: 60px 0;
+            background: linear-gradient(135deg, #f0f9ff 0%, #eff6ff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .testimonial-slider::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 20px;
+            background: linear-gradient(90deg, #2563eb, #0ea5e9);
+            z-index: 1;
+        }
+        
+        .testimonial-slider .swiper {
+            width: 100%;
+            height: 100%;
+            padding: 20px 0 40px;
+        }
+        
+        .testimonial-slider .swiper-slide {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            padding: 30px;
+            margin: 10px;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(224, 232, 255, 0.7);
+        }
+        
+        .testimonial-slider .swiper-slide-active {
+            transform: scale(1.03);
+            box-shadow: 0 20px 40px rgba(37, 99, 235, 0.15);
+            border: 1px solid rgba(37, 99, 235, 0.3);
+        }
+        
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin-right: 15px;
+            border: 3px solid #dbeafe;
+        }
+        
+        .testimonial-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .testimonial-info h4 {
+            font-weight: 700;
+            font-size: 18px;
+            margin-bottom: 5px;
+            color: #1e293b;
+        }
+        
+        .testimonial-info p {
+            color: #64748b;
+            font-size: 14px;
+            margin: 0;
+        }
+        
+        .testimonial-rating {
+            color: #f59e0b;
+            margin: 15px 0;
+        }
+        
+        .testimonial-content {
+            color: #475569;
+            line-height: 1.7;
+            font-size: 16px;
+            position: relative;
+            padding-top: 20px;
+        }
+        
+        .testimonial-content::before {
+            content: "";
+            position: absolute;
+            top: -15px;
+            left: -10px;
+            font-size: 80px;
+            font-family: Georgia, serif;
+            color: #dbeafe;
+            line-height: 1;
+            z-index: 0;
+        }
+        
+        .testimonial-company {
+            display: flex;
+            align-items: center;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px dashed #e2e8f0;
+        }
+        
+        .company-logo {
+            width: 40px;
+            height: 40px;
+            background: #eff6ff;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+        
+        .company-logo i {
+            color: #2563eb;
+            font-size: 18px;
+        }
+        
+        .company-info p {
+            color: #64748b;
+            font-size: 14px;
+            margin: 0;
+        }
+        
+        .swiper-pagination {
+            position: relative;
+            bottom: 0;
+            margin-top: 20px;
+        }
+        
+        .swiper-pagination-bullet {
+            width: 12px;
+            height: 12px;
+            background: #cbd5e1;
+            opacity: 1;
+        }
+        
+        .swiper-pagination-bullet-active {
+            background: #2563eb;
+            width: 30px;
+            border-radius: 4px;
+        }
+        
+        .swiper-button-next, .swiper-button-prev {
+            color: #2563eb;
+            background: rgba(255, 255, 255, 0.8);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(4px);
+            transition: all 0.3s ease;
+        }
+        
+        .swiper-button-next:hover, .swiper-button-prev:hover {
+            background: #2563eb;
+            color: white;
+            transform: scale(1.1);
+        }
+        
+        .swiper-button-next::after, .swiper-button-prev::after {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        
+        .testimonial-quote {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            color: #dbeafe;
+            font-size: 60px;
+            line-height: 1;
+            z-index: 0;
+        }
+    </style>
+</head>
+<body class="font-inter">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 w-full bg-gray-300/80 backdrop-blur-md shadow-sm z-50 py-3 px-4 md:px-8 transition-all duration-300">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-lg bg-primary flex items-center justify-center">
+                    <i class="fas fa-boxes text-white text-xl"></i>
+                </div>
+                <span class="text-xl font-bold text-dark">Flow<span class="text-primary">StockIn</span></span>
+            </div>
+            
+            <ul class="hidden md:flex space-x-8">
+                <li><a href="#home" class="nav-link text-slate-700 hover:text-primary font-medium">Home</a></li>
+                <li><a href="#features" class="nav-link text-slate-700 hover:text-primary font-medium">Features</a></li>
+                <li><a href="#testimonials" class="nav-link text-slate-700 hover:text-primary font-medium">Testimonials</a></li>
+                <li><a href="#pricing" class="nav-link text-slate-700 hover:text-primary font-medium">Pricing</a></li>
+                <li><a href="#about" class="nav-link text-slate-700 hover:text-primary font-medium">About</a></li>
+                <li><a href="#contact" class="nav-link text-slate-700 hover:text-primary font-medium">Contact</a></li>
+            </ul>
+            
+            <div class="flex items-center space-x-4">
+                <button class="hidden md:block text-primary font-medium hover:text-secondary transition">Sign In</button>
+               <a href="#contact"> <button  class="bg-primary text-white px-5 py-2.5 rounded-lg font-medium hover:bg-secondary transition shadow-md hover:shadow-lg">
+                    Request Demo
+                </button></a>
+                <button class="md:hidden text-slate-700">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+    
+    <main>
+        <!-- Hero Section - Full Width -->
+        <section id="home" class="max-w-7xl w-full pt-32 pb-20 px-0 relative overflow-hidden full-width-section">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+            
+            <div class="full-width-container relative z-10">
+                <div class="full-width-grid gap-12 items-center">
+                    <div class="text-center md:text-left">
+                        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
+                            <span class="gradient-text">Maximize Sales</span> with Advanced Inventory Solutions
+                        </h1>
+                        <p class="text-lg text-slate-600 mb-8 max-w-2xl mx-auto md:mx-0">
+                            Revolutionize your business operations with our cutting-edge POS software. Enhance customer experiences, streamline processes, and boost efficiency with our powerful, user-friendly platform.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                            <a href="#contact" ><button class="bg-primary text-white px-8 py-4 rounded-xl font-medium hover:bg-secondary transition shadow-lg hover:shadow-xl flex items-center justify-center gap-2">
+                                <i class="fas fa-play-circle"></i> Request Demo
+                                </a>
+                            </button>
+                            <button class="border-2 border-primary text-primary px-8 py-4 rounded-xl font-medium hover:bg-blue-50 transition flex items-center justify-center gap-2">
+                                <i class="fas fa-video"></i> Watch Video
+                            </button>
+                        </div>
+                        <div class="mt-10 flex flex-wrap justify-center md:justify-start gap-6">
+                            <div class="flex items-center bg-white/80 px-4 py-2 rounded-lg">
+                                <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
+                                    <i class="fas fa-check-circle text-green-600 text-sm"></i>
+                                </div>
+                                <span class="ml-2 font-medium">30-Day Free Trial</span>
+                            </div>
+                            <div class="flex items-center bg-white/80 px-4 py-2 rounded-lg">
+                                <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center">
+                                    <i class="fas fa-headset text-blue-600 text-sm"></i>
+                                </div>
+                                <span class="ml-2 font-medium">24/7 Support</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="flex justify-center">
+                        <div class="dashboard-mockup w-full max-w-md overflow-hidden">
+                            <div class="bg-gradient-to-r from-primary to-accent p-4">
+                                <div class="flex space-x-2">
+                                    <div class="w-3 h-3 rounded-full bg-red-400"></div>
+                                    <div class="w-3 h-3 rounded-full bg-yellow-400"></div>
+                                    <div class="w-3 h-3 rounded-full bg-green-400"></div>
+                                </div>
+                            </div>
+                            <div class="p-4 bg-white">
+                                <div class="flex justify-between items-center mb-4">
+                                    <div>
+                                        <h3 class="font-bold text-lg">Inventory Dashboard</h3>
+                                        <p class="text-sm text-slate-500">Real-time analytics & insights</p>
+                                    </div>
+                                    <div class="bg-blue-100 text-primary px-3 py-1 rounded-full text-sm font-medium">Live</div>
+                                </div>
+                                <div class="grid grid-cols-2 gap-4 mb-4">
+                                    <div class="bg-blue-50 p-3 rounded-lg">
+                                        <p class="text-xs text-slate-500">Total Products</p>
+                                        <p class="font-bold text-lg">1,248</p>
+                                    </div>
+                                    <div class="bg-amber-50 p-3 rounded-lg">
+                                        <p class="text-xs text-slate-500">Low Stock</p>
+                                        <p class="font-bold text-lg text-amber-600">42</p>
+                                    </div>
+                                    <div class="bg-green-50 p-3 rounded-lg">
+                                        <p class="text-xs text-slate-500">Today's Sales</p>
+                                        <p class="font-bold text-lg text-green-600">$8,425</p>
+                                    </div>
+                                    <div class="bg-purple-50 p-3 rounded-lg">
+                                        <p class="text-xs text-slate-500">Pending Orders</p>
+                                        <p class="font-bold text-lg">16</p>
+                                    </div>
+                                </div>
+                                <div class="bg-slate-50 p-3 rounded-lg border border-slate-100">
+                                    <div class="flex justify-between mb-2">
+                                        <p class="font-medium text-sm">Sales Performance</p>
+                                        <p class="text-sm text-green-600 font-medium">+24.5%</p>
+                                    </div>
+                                    <div class="h-24 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-100 p-2">
+                                        <div class="h-full flex items-end space-x-1">
+                                            <div class="w-4 bg-primary rounded-t-md" style="height: 70%"></div>
+                                            <div class="w-4 bg-indigo-400 rounded-t-md" style="height: 85%"></div>
+                                            <div class="w-4 bg-primary rounded-t-md" style="height: 60%"></div>
+                                            <div class="w-4 bg-indigo-400 rounded-t-md" style="height: 75%"></div>
+                                            <div class="w-4 bg-primary rounded-t-md" style="height: 90%"></div>
+                                            <div class="w-4 bg-indigo-400 rounded-t-md" style="height: 65%"></div>
+                                            <div class="w-4 bg-primary rounded-t-md" style="height: 80%"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section - Full Width -->
+        <!-- <section class="py-16 bg-gradient-to-r from-primary to-secondary text-white full-width-section">
+            <div class="full-width-container">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                    <div class="text-center">
+                        <div class="text-4xl md:text-5xl font-bold mb-2">95%</div>
+                        <div class="text-blue-100 font-medium">Customer Satisfaction</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl md:text-5xl font-bold mb-2">5,000+</div>
+                        <div class="text-blue-100 font-medium">Active Users</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl md:text-5xl font-bold mb-2">40%</div>
+                        <div class="text-blue-100 font-medium">Avg. Sales Increase</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl md:text-5xl font-bold mb-2">24/7</div>
+                        <div class="text-blue-100 font-medium">Support Available</div>
+                    </div>
+                </div>
+            </div>
+        </section> -->
+
+        <!-- Features Section - Full Width -->
+        <section id="features" class="py-20 bg-white full-width-section">
+            <div class="full-width-container">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Powerful Inventory Features</h2>
+                    <p class="text-lg text-slate-600 max-w-2xl mx-auto">Everything you need to manage your inventory efficiently and boost your business performance</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="feature-card p-8 rounded-2xl border border-slate-100">
+                        <div class="w-14 h-14 rounded-xl bg-blue-100 flex items-center justify-center mb-6">
+                            <i class="fas fa-box text-2xl text-primary"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Inventory Tracking</h3>
+                        <p class="text-slate-600 mb-4">Real-time tracking of stock levels across multiple locations with automated alerts for low inventory.</p>
+                    </div>
+                    
+                    <div class="feature-card p-8 rounded-2xl border border-slate-100">
+                        <div class="w-14 h-14 rounded-xl bg-indigo-100 flex items-center justify-center mb-6">
+                            <i class="fas fa-cash-register text-2xl text-indigo-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">POS Integration</h3>
+                        <p class="text-slate-600 mb-4">Seamless point-of-sale integration with barcode scanning, receipt printing, and payment processing.</p>
+                    </div>
+                    
+                    <div class="feature-card p-8 rounded-2xl border border-slate-100">
+                        <div class="w-14 h-14 rounded-xl bg-amber-100 flex items-center justify-center mb-6">
+                            <i class="fas fa-chart-line text-2xl text-amber-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Analytics & Reports</h3>
+                        <p class="text-slate-600 mb-4">Comprehensive analytics dashboard with customizable reports for sales, inventory, and customer insights.</p>
+                    </div>
+                    
+                    <div class="feature-card p-8 rounded-2xl border border-slate-100">
+                        <div class="w-14 h-14 rounded-xl bg-green-100 flex items-center justify-center mb-6">
+                            <i class="fas fa-mobile-alt text-2xl text-green-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Mobile Management</h3>
+                        <p class="text-slate-600 mb-4">Manage your inventory from anywhere with our iOS and Android apps. Real-time sync across all devices.</p>
+                    </div>
+                    
+                    <div class="feature-card p-8 rounded-2xl border border-slate-100">
+                        <div class="w-14 h-14 rounded-xl bg-purple-100 flex items-center justify-center mb-6">
+                            <i class="fas fa-warehouse text-2xl text-purple-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">Multi-Location</h3>
+                        <p class="text-slate-600 mb-4">Manage inventory across multiple warehouses or stores with transfer tracking and consolidated reporting.</p>
+                    </div>
+                    
+                    <div class="feature-card p-8 rounded-2xl border border-slate-100">
+                        <div class="w-14 h-14 rounded-xl bg-rose-100 flex items-center justify-center mb-6">
+                            <i class="fas fa-user-cog text-2xl text-rose-600"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">User Permissions</h3>
+                        <p class="text-slate-600 mb-4">Customizable user roles and permissions to control access levels for different team members.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Testimonial Slider Section -->
+        <section id="testimonials" class="testimonial-slider full-width-section">
+            <div class="full-width-container">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">
+                        <span class="gradient-text">Trusted by Thousands</span> of Businesses
+                    </h2>
+                    <p class="text-lg text-slate-600 max-w-2xl mx-auto">
+                        Hear from our satisfied customers who have transformed their inventory management with FlowStockIn
+                    </p>
+                </div>
+                
+                <!-- Slider main container -->
+                <div class="swiper mySwiper">
+                    <div class="swiper-wrapper">
+                        <!-- Slide 1 -->
+                        <div class="swiper-slide">
+                            <div class="testimonial-header">
+                                <div class="testimonial-avatar">
+                                    <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Sarah Johnson">
+                                </div>
+                                <div class="testimonial-info">
+                                    <h4>Sarah Johnson</h4>
+                                    <p>Retail Store Owner</p>
+                                </div>
+                            </div>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="testimonial-content">
+                                <p>"FlowStockIn has completely transformed how we manage our inventory. We've reduced stockouts by 85% and increased sales by 30% since implementation. The mobile app is incredibly intuitive!"</p>
+                            </div>
+                            <div class="testimonial-company">
+                                <div class="company-logo">
+                                    <i class="fas fa-store"></i>
+                                </div>
+                                <div class="company-info">
+                                    <p>Fashion Boutique Co.</p>
+                                </div>
+                            </div>
+                            <div class="testimonial-quote">
+                                <i class="fas fa-quote-right"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Slide 2 -->
+                        <div class="swiper-slide">
+                            <div class="testimonial-header">
+                                <div class="testimonial-avatar">
+                                    <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="Michael Rodriguez">
+                                </div>
+                                <div class="testimonial-info">
+                                    <h4>Michael Rodriguez</h4>
+                                    <p>Operations Manager</p>
+                                </div>
+                            </div>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                            </div>
+                            <div class="testimonial-content">
+                                <p>"The multi-location feature has been a game-changer for our pharmacy chain. We can now track inventory across all 8 locations in real-time. The reporting capabilities have saved us countless hours."</p>
+                            </div>
+                            <div class="testimonial-company">
+                                <div class="company-logo">
+                                    <i class="fas fa-prescription-bottle"></i>
+                                </div>
+                                <div class="company-info">
+                                    <p>City Health Pharmacy</p>
+                                </div>
+                            </div>
+                            <div class="testimonial-quote">
+                                <i class="fas fa-quote-right"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Slide 3 -->
+                        <div class="swiper-slide">
+                            <div class="testimonial-header">
+                                <div class="testimonial-avatar">
+                                    <img src="https://randomuser.me/api/portraits/women/67.jpg" alt="Jennifer Lee">
+                                </div>
+                                <div class="testimonial-info">
+                                    <h4>Jennifer Lee</h4>
+                                    <p>Inventory Specialist</p>
+                                </div>
+                            </div>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="testimonial-content">
+                                <p>"The barcode scanning feature has cut our inventory counting time in half. The analytics dashboard gives us insights we never had before. Customer support is always responsive and helpful."</p>
+                            </div>
+                            <div class="testimonial-company">
+                                <div class="company-logo">
+                                    <i class="fas fa-warehouse"></i>
+                                </div>
+                                <div class="company-info">
+                                    <p>Global Distribution Inc.</p>
+                                </div>
+                            </div>
+                            <div class="testimonial-quote">
+                                <i class="fas fa-quote-right"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Slide 4 -->
+                        <div class="swiper-slide">
+                            <div class="testimonial-header">
+                                <div class="testimonial-avatar">
+                                    <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="David Thompson">
+                                </div>
+                                <div class="testimonial-info">
+                                    <h4>David Thompson</h4>
+                                    <p>Business Owner</p>
+                                </div>
+                            </div>
+                            <div class="testimonial-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <div class="testimonial-content">
+                                <p>"After trying several inventory solutions, FlowStockIn stands out with its simplicity and powerful features. The 30-day free trial convinced us, and we've never looked back. ROI in just 2 months!"</p>
+                            </div>
+                            <div class="testimonial-company">
+                                <div class="company-logo">
+                                    <i class="fas fa-tools"></i>
+                                </div>
+                                <div class="company-info">
+                                    <p>Thompson Hardware</p>
+                                </div>
+                            </div>
+                            <div class="testimonial-quote">
+                                <i class="fas fa-quote-right"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Navigation buttons -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <!-- Pagination -->
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Pricing Section - Full Width -->
+        <section id="pricing" class="py-20 px-0 bg-slate-50 full-width-section">
+            <div class="full-width-container">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold mb-6">
+                        <span class="gradient-text">Simple, Transparent</span> Pricing
+                    </h2>
+                    <p class="text-lg text-slate-600 max-w-3xl mx-auto mb-8">
+                        Choose the perfect plan for your business. No hidden fees, no setup costs. Start with a 30-day free trial on any plan.
+                    </p>
+                    <div class="flex items-center justify-center gap-4 mb-8">
+                        <span class="text-slate-600">Monthly</span>
+                        <label class="relative inline-flex items-center cursor-pointer">
+                            <input type="checkbox" class="sr-only peer" id="billingToggle">
+                            <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                        </label>
+                        <span class="text-slate-600">Yearly</span>
+                        <span class="bg-green-100 text-green-600 px-3 py-1 rounded-full text-sm font-medium">Save 20%</span>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                    <!-- Starter Plan -->
+                    <div class="pricing-card bg-white rounded-2xl p-8 shadow-sm border border-slate-200 relative">
+                        <div class="text-center mb-8">
+                            <h3 class="text-xl font-bold mb-2">Starter</h3>
+                            <p class="text-slate-600 mb-6">Perfect for small businesses just getting started</p>
+                            <div class="mb-4">
+                                <span class="text-4xl font-bold text-slate-900">$29</span>
+                                <span class="text-slate-600">/month</span>
+                            </div>
+                            <p class="text-sm text-slate-500">Per terminal, billed monthly</p>
+                        </div>
+                        
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span class="text-slate-600">Up to 1,000 products</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span class="text-slate-600">Basic inventory management</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span class="text-slate-600">Payment processing included</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span class="text-slate-600">Email support</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span class="text-slate-600">Basic reporting</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span class="text-slate-600">10 user account</span>
+                            </li>
+                        </ul>
+                        
+                        <button class="w-full border-2 border-primary text-primary py-3 rounded-xl font-medium hover:bg-blue-50 transition">
+                            Start Free Trial
+                        </button>
+                    </div>
+
+                    <!-- Professional Plan (Most Popular) -->
+                    <div class="pricing-card bg-white rounded-2xl p-8 shadow-lg border-2 border-primary relative transform scale-105">
+                        <div class="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                            <span class="bg-primary text-white px-6 py-2 rounded-full text-sm font-medium">Most Popular</span>
+                        </div>
+                        
+                        <div class="text-center mb-8">
+                            <h3 class="text-xl font-bold mb-2">Professional</h3>
+                            <p class="text-slate-600 mb-6">Ideal for growing businesses with multiple locations</p>
+                            <div class="mb-4">
+                                <span class="text-4xl font-bold text-slate-900">$79</span>
+                                <span class="text-slate-600">/month</span>
+                            </div>
+                            <p class="text-sm text-slate-500">Per terminal, billed monthly</p>
+                        </div>
+                        
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span class="text-slate-600">Unlimited products</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span class="text-slate-600">Advanced inventory management</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span class="text-slate-600">Multi-location support</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span class="text-slate-600">Customer management & CRM</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span class="text-slate-600">Advanced analytics & reporting</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span class="text-slate-600">Phone & email support</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span class="text-slate-600">Up to 20 user accounts</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span class="text-slate-600">E-commerce integration</span>
+                            </li>
+                        </ul>
+                        
+                        <button class="w-full bg-primary text-white py-3 rounded-xl font-medium hover:bg-secondary transition shadow-lg">
+                            Start Free Trial
+                        </button>
+                    </div>
+
+                    <!-- Enterprise Plan -->
+                    <!-- <div class="pricing-card bg-white rounded-2xl p-8 shadow-sm border border-slate-200 relative">
+                        <div class="text-center mb-8">
+                            <h3 class="text-xl font-bold mb-2">Enterprise</h3>
+                            <p class="text-slate-600 mb-6">For large businesses with complex needs</p>
+                            <div class="mb-4">
+                                <span class="text-4xl font-bold text-slate-900">Custom</span>
+                            </div>
+                            <p class="text-sm text-slate-500">Tailored pricing for your business</p>
+                        </div>
+                        
+                        <ul class="space-y-4 mb-8">
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span class="text-slate-600">Everything in Professional</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span class="text-slate-600">Unlimited locations & users</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span class="text-slate-600">Custom integrations</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span class="text-slate-600">Dedicated account manager</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span class="text-slate-600">24/7 priority support</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span class="text-slate-600">Custom training & onboarding</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span class="text-slate-600">SLA guarantee</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check text-green-500 mt-1 mr-3"></i>
+                                <span class="text-slate-600">Advanced security features</span>
+                            </li>
+                        </ul>
+                        
+                        <button class="w-full border-2 border-primary text-primary py-3 rounded-xl font-medium hover:bg-blue-50 transition">
+                            Contact Sales
+                        </button>
+                    </div> -->
+                </div>
+
+                <!-- Additional Info -->
+                <div class="mt-16 text-center">
+                    <div class="bg-blue-50 rounded-2xl p-8 max-w-4xl mx-auto">
+                        <h3 class="text-xl font-bold mb-4">All Plans Include:</h3>
+                        <div class="grid md:grid-cols-3 gap-6 text-sm">
+                            <div class="flex items-center justify-center">
+                                <i class="fas fa-shield-alt text-primary mr-2"></i>
+                                <span>Bank-level security</span>
+                            </div>
+                            <div class="flex items-center justify-center">
+                                <i class="fas fa-cloud text-primary mr-2"></i>
+                                <span>Cloud-based storage</span>
+                            </div>
+                            <div class="flex items-center justify-center">
+                                <i class="fas fa-mobile-alt text-primary mr-2"></i>
+                                <span>Mobile app access</span>
+                            </div>
+                            <div class="flex items-center justify-center">
+                                <i class="fas fa-sync text-primary mr-2"></i>
+                                <span>Automatic updates</span>
+                            </div>
+                            <div class="flex items-center justify-center">
+                                <i class="fas fa-certificate text-primary mr-2"></i>
+                                <span>PCI compliance</span>
+                            </div>
+                            <div class="flex items-center justify-center">
+                                <i class="fas fa-calendar text-primary mr-2"></i>
+                                <span>30-day free trial</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Section -->
+                <div class="mt-16">
+                    <h3 class="text-2xl font-bold text-center mb-8">Frequently Asked Questions</h3>
+                    <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                        <div>
+                            <h4 class="font-semibold mb-2 text-slate-900">Can I switch plans anytime?</h4>
+                            <p class="text-slate-600 text-sm">Yes, you can upgrade or downgrade your plan at any time. Changes take effect on your next billing cycle.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2 text-slate-900">Is there a setup fee?</h4>
+                            <p class="text-slate-600 text-sm">No setup fees, no hidden costs. You only pay the monthly subscription fee for your chosen plan.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2 text-slate-900">What payment methods do you accept?</h4>
+                            <p class="text-slate-600 text-sm">We accept all major credit cards, ACH transfers, and can set up custom billing for Enterprise customers.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2 text-slate-900">Do you offer discounts for non-profits?</h4>
+                            <p class="text-slate-600 text-sm">Yes, we offer special pricing for qualified non-profit organizations. Contact our sales team for details.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- About Section - Full Width -->
+        <section id="about" class="py-20 bg-gradient-to-br from-blue-50 to-indigo-50 full-width-section">
+            <div class="full-width-container">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">About FlowStockIn</h2>
+                    <p class="text-lg text-slate-600 max-w-2xl mx-auto">Transforming inventory management for modern businesses</p>
+                </div>
+                
+                <div class="bg-white rounded-2xl shadow-lg p-8 md:p-12">
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <p class="text-lg text-slate-700 mb-6">
+                                We are dedicated to building <span class="font-bold text-primary">modern, intuitive, and highly efficient inventory systems</span> specifically tailored for retailers and pharmacies.
+                            </p>
+                            <p class="text-slate-700 mb-8">
+                                Our solutions are designed to streamline your operations, reduce overhead, and empower your business to thrive in today's competitive market. With over a decade of experience in inventory management, our team of experts understands the unique challenges businesses face.
+                            </p>
+                            
+                            <div class="space-y-6">
+                                <div class="flex items-start">
+                                    <div class="mt-1 w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
+                                        <i class="fas fa-check text-white text-sm"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <h4 class="font-bold text-lg">Our Mission</h4>
+                                        <p class="text-slate-700">To empower businesses with technology that simplifies inventory management and maximizes profitability.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="mt-1 w-8 h-8 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
+                                        <i class="fas fa-check text-white text-sm"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <h4 class="font-bold text-lg">Our Vision</h4>
+                                        <p class="text-slate-700">To become the most trusted inventory management partner for businesses worldwide.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="grid grid-cols-2 gap-6">
+                            <div class="stat-card rounded-xl p-6">
+                                <div class="text-4xl font-bold text-primary mb-3">2+</div>
+                                <h4 class="font-bold text-lg mb-2">Years Experience</h4>
+                            </div>
+                            
+                            <div class="stat-card rounded-xl p-6">
+                                <div class="text-4xl font-bold text-primary mb-3">24/7</div>
+                                <h4 class="font-bold text-lg mb-2">Support Team</h4>
+                            </div>
+                            
+                            <div class="stat-card rounded-xl p-6">
+                                <div class="text-4xl font-bold text-primary mb-3">99.9%</div>
+                                <h4 class="font-bold text-lg mb-2">Uptime</h4>
+                            </div>
+                            
+                            <!-- <div class="stat-card rounded-xl p-6">
+                                <div class="text-4xl font-bold text-primary mb-3">50+</div>
+                                <h4 class="font-bold text-lg mb-2">Integrations</h4>
+                            </div> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section - Full Width -->
+        <section id="contact" class="py-20 bg-white full-width-section">
+            <div class="full-width-container">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4">Get in Touch!</h2>
+                    <p class="text-lg text-slate-600 max-w-2xl mx-auto">Have questions or want to see a demo? We'd love to hear from you</p>
+                </div>
+                
+                <div class="bg-gradient-to-br from-blue-50 to-indigo-50 rounded-2xl shadow-lg p-8 md:p-12">
+                    <div class="grid md:grid-cols-2 gap-12">
+                        <div>
+                            <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+                            
+                            <div class="space-y-6">
+                                <div class="flex items-start">
+                                    <div class="mt-1 w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center flex-shrink-0">
+                                        <i class="fas fa-envelope text-blue-600 text-lg"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <h4 class="font-bold text-lg mb-1">Email Us</h4>
+                                        <a href="mailto:flowstockin@gmail.com" class="text-primary hover:underline">flowstockin@gmail.com</a>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="mt-1 w-12 h-12 rounded-lg bg-indigo-100 flex items-center justify-center">
+                                        <i class="fas fa-phone-alt text-indigo-600 text-lg"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <h4 class="font-bold text-lg mb-1">Call Us</h4>
+                                        <a href="#" class="text-primary hover:underline">+233 (0) 57057-7508 </a>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start">
+                                    <div class="mt-1 w-12 h-12 rounded-lg bg-purple-100 flex items-center justify-center flex-shrink-0">
+                                        <i class="fas fa-map-marker-alt text-purple-600 text-lg"></i>
+                                    </div>
+                                    <div class="ml-4">
+                                        <h4 class="font-bold text-lg mb-1">Visit Us</h4>
+                                        <p class="text-slate-700">Tema, Comm. 22<br>Accra, Ghana</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-10">
+                                <h4 class="font-bold text-lg mb-4">Follow Us</h4>
+                                <div class="flex space-x-4">
+                                    <a href="#" class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-blue-600 hover:bg-blue-50 transition">
+                                        <i class="fab fa-facebook-f"></i>
+                                    </a>
+                                    <a href="#" class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-blue-400 hover:bg-blue-50 transition">
+                                        <i class="fab fa-twitter"></i>
+                                    </a>
+                                    <a href="#" class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-purple-600 hover:bg-blue-50 transition">
+                                        <i class="fab fa-linkedin-in"></i>
+                                    </a>
+                                    <a href="#" class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-rose-500 hover:bg-blue-50 transition">
+                                        <i class="fab fa-instagram"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <h3 class="text-2xl font-bold mb-6">Send us a message</h3>
+                            <form action="https://formspree.io/f/xeokneyv" method="POST" class="space-y-6">
+                                <div>
+                                    <label for="full-name" class="block text-slate-700 mb-2 font-medium">Full Name</label>
+                                    <input type="text" id="full-name" name="Full Name" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                </div>
+                                <div>
+                                    <label for="email-address" class="block text-slate-700 mb-2 font-medium">Email Address</label>
+                                    <input type="email" id="email-address" name="_replyto" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                </div>
+                                <div>
+                                    <label for="phone-number" class="block text-slate-700 mb-2 font-medium">Phone Number</label>
+                                    <input type="tel" id="phone-number" name="Phone Number" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                                </div>
+                                <div>
+                                    <label for="message" class="block text-slate-700 mb-2 font-medium">Message</label>
+                                    <textarea id="message" rows="4" name="Message" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                                </div>
+                                <button type="submit" class="w-full bg-primary text-white py-4 rounded-lg font-medium hover:bg-secondary transition shadow-md">
+                                    Send Message
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
+    <script>
+        // Initialize Swiper
+        var swiper = new Swiper(".mySwiper", {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 1,
+                },
+                768: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 30,
+                },
+            },
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Simple scroll animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                threshold: 0.1
+            };
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'fadeIn 0.8s forwards';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            
+            document.querySelectorAll('section').forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
